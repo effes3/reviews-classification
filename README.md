@@ -411,7 +411,7 @@ print("Metrics saved to test_metrics.txt")
 ## 👤 Автор
 
 Григорий, студент 2 курса НИУ ВШЭ (факультет химии)  
-Telegram: @gsemak,
+Telegram: [@gsemak](t.me/gsemak)\
 GitHub: [effes3](https://github.com/effes3)  
 Резюме: [ссылка на резюме на Я. Диске](https://disk.360.yandex.ru/d/rIDufYfmGRIzaQ)
 
