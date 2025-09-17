@@ -362,7 +362,7 @@ print("Metrics saved to test_metrics.txt")
    - Откройте Google Colab и создайте новый ноутбук.
    - Выполните команду для клонирования репозитория:
      ```bash
-     !git clone https://github.com/<your-username>/reviews-classification.git
+     !git clone https://github.com/effes3/reviews-classification.git
      %cd reviews-classification
      ```
 
