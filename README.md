@@ -340,95 +340,77 @@ print("Metrics saved to test_metrics.txt")
 
 - **Среднее время предсказания на объект в `test`**: 0.031 секунды.
 - **Weighted F1-score на `test`**: 0.6984.
-- Все метрики сохранены в `test_metrics.txt` (для `test`) и `metrics.txt` (для LoRA).
+- Все метрики сохранены в `test_metrics.txt` (для `test`) и `metrics.txt` (для `LoRA`).
 
 ---
 
 ## 🛠️ Структура репозитория
 
-- **src/**: `reviews_classification.ipynb` (основной ноутбук).
+- **src/**: `finalfinalfinal_combined.ipynb` (объединенные ноутбуки `finalfinalfinal_all.ipynb` и `cleaning_datasets.ipynb`), `finalfinalfinal_all.ipynb` (разметка и обучение), `cleaning_datasets.ipynb` (работа с датасетами)
 - **logs/**: `metrics.txt`, `test_metrics.txt`.
+- **data/**: `FINAL_TEST.csv`, `FINAL_TRAIN.csv`, `FINAL_VALID.csv`, `candidates.xlsx`, `candidates_2_labeled.xlsx`, `final_submission_all.csv`, `test.csv`, `train_1962.csv`, `valid_126.csv`
 - **images/**: `photo_2025-09-17_23-55-04.jpg`, `photo_2025-09-18_00-05-27.jpg`.
-- **requirements.txt**: Зависимости.
 - **README.md**: Документация.
-- **.gitignore**: Игнорирование больших файлов.
-
-**Примечание**: Данные (`FINAL_TRAIN.csv`, `FINAL_VALID.csv`, `FINAL_TEST.csv`, `candidates.xlsx`, `candidates_2_labeled.xlsx`) и чекпоинты (`results_lora_1/`) не включены из-за размера. Скачайте их с [Google Drive](#) или сгенерируйте заново.
 
 ---
 
 ## ⚙️ Установка и запуск
 
-1. Клонируйте репозиторий:
-   ```bash
-   git clone https://github.com/<your-username>/reviews-classification.git
-   cd reviews-classification
-   ```
+**1. Клонируйте репозиторий**:
+   - Откройте Google Colab и создайте новый ноутбук.
+   - Выполните команду для клонирования репозитория:
+     ```bash
+     !git clone https://github.com/<your-username>/reviews-classification.git
+     %cd reviews-classification
+     ```
 
-2. Установите зависимости:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   venv\Scripts\activate     # Windows
-   pip install -r requirements.txt
-   ```
+**2. Скачайте ноутбук**:
+   - Загрузите файл `finalfinalfinal_all.ipynb` из папки `src`:
+     ```bash
+     !wget https://raw.githubusercontent.com/effes3/reviews-classification/main/src/finalfinalfinal_all.ipynb
+     ```
+   - Откройте `finalfinalfinal_all.ipynb` в Colab, загрузив его через интерфейс или выполнив:
+     ```python
+     from google.colab import files
+     files.upload()  # Загрузите finalfinalfinal_all.ipynb
+     ```
 
-3. Подготовьте данные:
-   - Разместите `FINAL_TRAIN.csv`, `FINAL_VALID.csv`, `FINAL_TEST.csv`, `candidates.xlsx`, `candidates_2_labeled.xlsx` в корневую папку.
-   - Обновите пути в `reviews_classification.ipynb`.
-
-4. Запустите ноутбук:
-   ```bash
-   jupyter notebook src/reviews_classification.ipynb
-   ```
-
-5. Проверьте результаты:
-   ```bash
-   cat logs/test_metrics.txt
-   head test_predictions.csv
-   ```
-
----
-
-## 📋 Зависимости
-
-См. `requirements.txt`:
-```text
-transformers==4.38.2
-peft==0.10.0
-datasets==2.18.0
-scikit-learn==1.4.1.post1
-sentence-transformers==2.2.2
-catboost==1.2.5
-deep-translator==1.11.4
-torch
-pandas
-numpy
-tqdm
-matplotlib
-seaborn
-evaluate
-```
+**3. Подготовьте данные**:
+   - Подключите Google Диск:
+     ```python
+     from google.colab import drive
+     drive.mount('/content/drive')
+     ```
+   - Создайте папку `NLP_CASE_FINAL` на Google Диске:
+     ```bash
+     !mkdir -p /content/drive/MyDrive/NLP_CASE_FINAL
+     ```
+   - Скопируйте файлы данных из папки `data` репозитория (`FINAL_TRAIN.csv`, `FINAL_VALID.csv`, `FINAL_TEST.csv`, `candidates.xlsx`, `candidates_2_labeled.xlsx`) в `/content/drive/MyDrive/NLP_CASE_FINAL`. Это можно сделать вручную через интерфейс Google Диска или с помощью команды:
+     ```bash
+     !cp data/* /content/drive/MyDrive/NLP_CASE_FINAL/
+     ```
+   - Проверьте наличие файлов:
+     ```bash
+     !ls /content/drive/MyDrive/NLP_CASE_FINAL
+     ```
+   - Убедитесь, что пути в `finalfinalfinal_all.ipynb` указывают на `/content/drive/MyDrive/NLP_CASE_FINAL/`, например:
+     ```python
+     train = pd.read_csv('/content/drive/MyDrive/NLP_CASE_FINAL/FINAL_TRAIN.csv')
+     valid = pd.read_csv('/content/drive/MyDrive/NLP_CASE_FINAL/FINAL_VALID.csv')
+     test = pd.read_csv('/content/drive/MyDrive/NLP_CASE_FINAL/FINAL_TEST.csv')
+     ```
+**4. Запустите ноутбук**:
+   - Выполните ячейки в `finalfinalfinal_all.ipynb` последовательно через интерфейс Colab.
+   - Убедитесь, что используете GPU T4
 
 ---
-
-## 📈 Улучшение производительности
-
-- **Объединение классов**: Объедините "украшения и аксессуары" с "одежда" для упрощения задачи:
-  ```python
-  train_df['pseudo_label_ensemble_final'] = train_df['pseudo_label_ensemble_final'].replace('украшения и аксессуары', 'одежда')
-  valid_df['pseudo_label_ensemble_final'] = valid_df['pseudo_label_ensemble_final'].replace('украшения и аксессуары', 'одежда')
-  ```
-- **Дополнительная аугментация**: Увеличьте `variations=5` в `augment_text` для "обувь".
-- **Гиперпараметры LoRA**: Попробуйте `learning_rate=5e-5`, `r=64`, `num_train_epochs=30`.
-
 ---
 
 ## 👤 Автор
 
 Григорий, студент 2 курса НИУ ВШЭ (факультет химии)  
-Контакты: @gsemak 
-GitHub: [github.com/effes3](https://github.com/effes3)  
+Telegram: @gsemak
+GitHub: [effes3](https://github.com/effes3)  
 Резюме: [ссылка на резюме на Я. Диске](https://disk.360.yandex.ru/d/rIDufYfmGRIzaQ)
 
 ---
