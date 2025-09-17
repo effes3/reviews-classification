@@ -350,11 +350,13 @@ print("Metrics saved to test_metrics.txt")
 
 ## 🛠️ Структура репозитория
 
-- **src/**: `finalfinalfinal_combined.ipynb` (объединенные ноутбуки `finalfinalfinal_all.ipynb` и `cleaning_datasets.ipynb`), `finalfinalfinal_all.ipynb` (разметка и обучение), `cleaning_datasets.ipynb` (работа с датасетами)
-- **logs/**: `metrics.txt`, `test_metrics.txt`.
 - **data/**: `FINAL_TEST.csv`, `FINAL_TRAIN.csv`, `FINAL_VALID.csv`, `candidates.xlsx`, `candidates_2_labeled.xlsx`, `final_submission_all.csv`, `test.csv`, `train_1962.csv`, `valid_126.csv`
 - **images/**: `photo_2025-09-17_23-55-04.jpg`, `photo_2025-09-18_00-05-27.jpg`.
+- **src/**: `finalfinalfinal_combined.ipynb` (объединенные ноутбуки `finalfinalfinal_all.ipynb` и `cleaning_datasets.ipynb`), `finalfinalfinal_all.ipynb` (разметка и обучение), `cleaning_datasets.ipynb` (работа с датасетами)
+- **metrics/**: `metrics.txt`, `test_metrics.txt`.
+- **LICENCE**: MIT License.
 - **README.md**: Документация.
+- **mind_roadmap.pdf**: детальная визуализация умственного процесса.
 
 ---
 
