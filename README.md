@@ -341,6 +341,8 @@ print("Metrics saved to test_metrics.txt")
 - **Среднее время предсказания на объект в `test`**: 0.031 секунды.
 - **Weighted F1-score на `test`**: 0.6984.
 - Все метрики сохранены в `test_metrics.txt` (для `test`) и `metrics.txt` (для `LoRA`).
+- Финальные ответы в соответствующем .csv-формате сохранены в `reviews-classification
+/data/final_submission.csv`
 
 ---
 
