@@ -6,7 +6,7 @@
 - **Аугментация через back-translation**.
 - **Итеративная ручная разметка** порядка десятка примеров.
 
-Результат находится в `reviews-classification/data/finalfinalfinal_all.csv`
+Результат находится в `reviews-classification/data/final_submission_all.csv`
 
 ---
 
