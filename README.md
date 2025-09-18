@@ -393,7 +393,7 @@ print("Metrics saved to test_metrics.txt")
      ```bash
      !mkdir -p /content/drive/MyDrive/NLP_CASE_FINAL
      ```
-   - Скопируйте файлы данных из папки `data` репозитория (`FINAL_TEST.csv`, `FINAL_TRAIN.csv`, `FINAL_VALID.csv`, `candidates.xlsx`, `candidates_2_labeled.xlsx`, `test.csv`, `train_1962.csv`, `valid_126.csv`) в `/content/drive/MyDrive/NLP_CASE_FINAL`. Для запуска полного файла `finalfinalfinal_combined.ipynb` в рабочую папку потребуется загрузить файл `test.csv`, предоставленный для решения кейса. Как итог, это можно сделать вручную через интерфейс Google Диска или с помощью команды:
+   - Скопируйте файлы данных из папки `data` репозитория (`FINAL_TEST.csv`, `FINAL_TRAIN.csv`, `FINAL_VALID.csv`, `candidates.xlsx`, `candidates_2_labeled.xlsx`, `test.csv`, `train_1962.csv`, `valid_126.csv`) в `/content/drive/MyDrive/NLP_CASE_FINAL`. Для запуска полного файла `finalfinalfinal_combined.ipynb` в рабочую папку потребуется загрузить файл `train.csv`, предоставленный для решения кейса, который хранится на облачном хранилище Т-Банка. Как итог, все это можно сделать вручную через интерфейс Google Диска или с помощью команды:
      ```bash
      !cp data/* /content/drive/MyDrive/NLP_CASE_FINAL/
      ```
