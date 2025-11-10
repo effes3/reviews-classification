@@ -94,10 +94,8 @@ def augment_text(text, variations=3):
 
     for i in range(variations):
         try:
-            # Случайный выбор промежуточного языка
             intermediate_lang = random.choice(intermediate_languages)
 
-            # Перевод текста на промежуточный язык
             translated_intermediate = GoogleTranslator(
                 source='ru',
                 target=intermediate_lang
@@ -105,7 +103,6 @@ def augment_text(text, variations=3):
 
             time.sleep(0.1)
 
-            # Обратный перевод на русский
             back_translated = GoogleTranslator(
                 source=intermediate_lang,
                 target='ru'
